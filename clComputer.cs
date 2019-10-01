@@ -575,6 +575,21 @@ namespace Smartrix
             //    board[l.i, l.j].BackgroundImage = computerCards[l.numOfcard].BackgroundImage;
 
         }
+        
+         private void GameOver()
+        {
+            ((frmMainScreen)Parent).Hide();
+            if (clGlobal.computerScores > clGlobal.playerScores) //Computer won
+            {
+                frmGameOver GameOver = new frmGameOver("fail.jpg");
+                GameOver.Show();
+            }
+            else
+            {
+                frmGameOver GameOver = new frmGameOver("win.jpg");
+                GameOver.Show();
+            }
+        }
 
 
                 private void randomMiddleCard()
