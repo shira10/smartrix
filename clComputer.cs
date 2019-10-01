@@ -617,3 +617,15 @@ namespace Smartrix
 
     }
 }
+
+clspicboard
+
+public bool checkAllCardsInUse()
+        {
+            for (int i = 0; i < clGlobal.cardsNum; i++)
+                if (clGlobal.usedCards[i] == false)
+                    return false; // נמצא כרטיס שאינו בשימוש
+
+            return true; //כל הכרטיסים בשימוש - סיום משחק
+        }
+
