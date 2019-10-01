@@ -577,6 +577,29 @@ namespace Smartrix
         }
 
 
+                private void randomMiddleCard()
+        {
+            //board is empty -> random new middle card
+            int r;
+            Random rnd = new Random();
+            if (checkAllCardsInUse() == true) //אין אפשרות להגריל קלף אמצעי חדש -> סיום משחק
+                GameOver();
+            else
+            {
+                //random card that wasn't used
+                do
+                {
+                    r = rnd.Next(clGlobal.cardsNum);
+                } while (clGlobal.usedCards[r] == true);
+
+                ((clPicBoard)this.Parent.Controls["44"]).BackgroundImage = Image.FromFile("..\\..\\cards\\card (" + r + ").jpg");
+                clGlobal.usedCards[r] = true;
+                ((clPicBoard)this.Parent.Controls["44"]).saveCardValues(r);
+                ((clPicBoard)this.Parent.Controls["44"]).rotateFlag = false;
+                clGlobal.boardStatus[4, 4] = 1;
+            }
+
+        }
 
     }
 }
